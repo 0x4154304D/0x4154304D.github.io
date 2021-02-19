@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="SSH登陆"/>
+
+
+
+
+  <meta name="keywords" content="Setting," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="AT0M">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2020/02/17/SSH登陆/"/>
+
+
+<meta name="description" content="0.修改ssh配置文件1sudo vim &#x2F;etc&#x2F;ssh&#x2F;sshd_config   修改以下内容 123PremitRootLogin yes          #启用允许Root用户登陆，修改为yesRSAAuthentication yes        # 启用 RSA 认证，默认为yesPubkeyAuthentication yes     # 启用公钥认证，默认为yes  1.产生">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSH登陆">
+<meta property="og:url" content="http://yoursite.com/2020/02/17/SSH%E7%99%BB%E9%99%86/index.html">
+<meta property="og:site_name" content="AT0M">
+<meta property="og:description" content="0.修改ssh配置文件1sudo vim &#x2F;etc&#x2F;ssh&#x2F;sshd_config   修改以下内容 123PremitRootLogin yes          #启用允许Root用户登陆，修改为yesRSAAuthentication yes        # 启用 RSA 认证，默认为yesPubkeyAuthentication yes     # 启用公钥认证，默认为yes  1.产生">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/0x4154304D/img/master/image-20191203164241341.png">
+<meta property="article:published_time" content="2020-02-17T04:03:23.000Z">
+<meta property="article:modified_time" content="2021-02-19T06:56:21.870Z">
+<meta property="article:author" content="AT0M">
+<meta property="article:tag" content="Setting">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/0x4154304D/img/master/image-20191203164241341.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: true
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> SSH登陆 - AT0M </title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">AT0M</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          SSH登陆
+        
+      </h1>
+
+      <time class="post-time">
+          2月 17 2020
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h2 id="0-修改ssh配置文件"><a href="#0-修改ssh配置文件" class="headerlink" title="0.修改ssh配置文件"></a>0.修改ssh配置文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/0x4154304D/img/master/image-20191203164241341.png" alt="image-20191203164241341"></p>
+<p>修改以下内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PremitRootLogin yes          #启用允许Root用户登陆，修改为yes</span><br><span class="line">RSAAuthentication yes        # 启用 RSA 认证，默认为yes</span><br><span class="line">PubkeyAuthentication yes     # 启用公钥认证，默认为yes</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="1-产生ssh认证文件"><a href="#1-产生ssh认证文件" class="headerlink" title="1.产生ssh认证文件"></a>1.产生ssh认证文件</h2><p>ssh-keygen默认使用rsa算法，同时也可以使用较为详细的命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -b 1024 -f yourkeyname -C "备注"</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-b</td>
+<td align="left">采用长度1024bit的密钥对,b=bits,最长4096，不过没啥必要</td>
+</tr>
+<tr>
+<td align="left">-t</td>
+<td align="left">采用rsa/dsa/ecdsa/ed25519 加密方式,t=type</td>
+</tr>
+<tr>
+<td align="left">-f</td>
+<td align="left">生成文件名,f=output_keyfiles</td>
+</tr>
+<tr>
+<td align="left">-C</td>
+<td align="left">备注，C=comment</td>
+</tr>
+<tr>
+<td align="left">—</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">## 2.将产生的ssh公钥加入到服务器认证文件中</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h3 id="将公钥上传到服务器"><a href="#将公钥上传到服务器" class="headerlink" title="将公钥上传到服务器"></a>将公钥上传到服务器</h3><p>方法一：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id root@10.108.x.x</span><br></pre></td></tr></table></figure>
+
+<p>方法二：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp id_rea.pub root@10.108.13.44:~/</span><br></pre></td></tr></table></figure>
+
+<h3 id="将公钥加入到认证文件中"><a href="#将公钥加入到认证文件中" class="headerlink" title="将公钥加入到认证文件中"></a>将公钥加入到认证文件中</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<h3 id="重启ssh服务"><a href="#重启ssh服务" class="headerlink" title="重启ssh服务"></a>重启ssh服务</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh restart</span><br></pre></td></tr></table></figure>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Setting/">Setting</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2020/02/23/2020-02-23-Tomcat%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Tomcat安装配置</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2020/02/12/2020-02-12-Nginx%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/">
+        <span class="next-text nav-default">Nginx源码安装</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2021
+    <span class="footer-author">AT0M.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

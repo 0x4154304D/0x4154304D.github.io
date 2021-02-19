@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="firewall 开启端口"/>
+
+
+
+
+  <meta name="keywords" content="Setting," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="AT0M">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2020/03/27/2020-03-27-firewall-开启端口/"/>
+
+
+<meta name="description" content="查看已经打开的端口1netstat -nlp  查看打开的端口信息    Proto Recv-Q Send-Q Local Address Foreign Address State PID&#x2F;Program name    tcp 0 0 0.0.0.0:22 0.0.0.0:* LISTEN 1143&#x2F;sshd   udp 0 0 0.0.0.0:68 0.0.0.0:*  868&#x2F;dhcli">
+<meta property="og:type" content="article">
+<meta property="og:title" content="firewall 开启端口">
+<meta property="og:url" content="http://yoursite.com/2020/03/27/2020-03-27-firewall-%E5%BC%80%E5%90%AF%E7%AB%AF%E5%8F%A3/index.html">
+<meta property="og:site_name" content="AT0M">
+<meta property="og:description" content="查看已经打开的端口1netstat -nlp  查看打开的端口信息    Proto Recv-Q Send-Q Local Address Foreign Address State PID&#x2F;Program name    tcp 0 0 0.0.0.0:22 0.0.0.0:* LISTEN 1143&#x2F;sshd   udp 0 0 0.0.0.0:68 0.0.0.0:*  868&#x2F;dhcli">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-27T10:25:23.000Z">
+<meta property="article:modified_time" content="2021-02-19T06:56:21.938Z">
+<meta property="article:author" content="AT0M">
+<meta property="article:tag" content="Setting">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: true
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> firewall 开启端口 - AT0M </title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">AT0M</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          firewall 开启端口
+        
+      </h1>
+
+      <time class="post-time">
+          3月 27 2020
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h3 id="查看已经打开的端口"><a href="#查看已经打开的端口" class="headerlink" title="查看已经打开的端口"></a>查看已经打开的端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -nlp</span><br></pre></td></tr></table></figure>
+
+<p>查看打开的端口信息</p>
+<table>
+<thead>
+<tr>
+<th>Proto</th>
+<th>Recv-Q</th>
+<th>Send-Q</th>
+<th>Local Address</th>
+<th>Foreign Address</th>
+<th>State</th>
+<th>PID/Program name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tcp</td>
+<td>0</td>
+<td>0</td>
+<td>0.0.0.0:22</td>
+<td>0.0.0.0:*</td>
+<td>LISTEN</td>
+<td>1143/sshd</td>
+</tr>
+<tr>
+<td>udp</td>
+<td>0</td>
+<td>0</td>
+<td>0.0.0.0:68</td>
+<td>0.0.0.0:*</td>
+<td></td>
+<td>868/dhclient</td>
+</tr>
+<tr>
+<td>udp</td>
+<td>0</td>
+<td>0</td>
+<td>127.0.0.1:323</td>
+<td>0.0.0.0:*</td>
+<td></td>
+<td>628/chronyd</td>
+</tr>
+<tr>
+<td>upd6</td>
+<td>0</td>
+<td>0</td>
+<td>::1:323</td>
+<td>:::*</td>
+<td></td>
+<td>628/chronyd</td>
+</tr>
+</tbody></table>
+<hr>
+<p>查看防火墙是否放行端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --query-port=8888/tcp				<span class="comment">#这里查询8888的tcp端口是否放行</span></span><br><span class="line"><span class="comment">#如果提示FirewallD is not running,则说明未开启Firewall</span></span><br><span class="line">systemctl start firewalld</span><br><span class="line"><span class="comment">#启动后再执行上述语句,yes/no分别对应是否开启该端口</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --add-port=8888/tcp --permanent </span><br><span class="line"><span class="comment">#提示success则说明端口开放成功</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="关闭端口"><a href="#关闭端口" class="headerlink" title="关闭端口"></a>关闭端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --remove-port=8888/tcp --permanent</span><br><span class="line"><span class="comment">#提示success则说明端口关闭成功</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="重载配置"><a href="#重载配置" class="headerlink" title="重载配置"></a>重载配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --reload</span><br><span class="line"><span class="comment">#每次开启/关闭端口后 都需要执行这步骤使得其生效</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查看开启的所有端口"><a href="#查看开启的所有端口" class="headerlink" title="查看开启的所有端口"></a>查看开启的所有端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --list-ports</span><br><span class="line"><span class="comment">#可以查看所有开启的tcp/udp端口</span></span><br></pre></td></tr></table></figure>
+
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Setting/">Setting</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2020/04/19/2020-04-19-Integer.numberOfLeadingZero%E8%AF%A6%E8%A7%A3/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Integer.numberOfLeadingZero详解</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2020/03/22/2020-03-22-Java%E6%9E%84%E9%80%A0%E5%99%A8/">
+        <span class="next-text nav-default">Java构造器</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2021
+    <span class="footer-author">AT0M.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="HTTP 请求头/响应头详解"/>
+
+
+
+
+  <meta name="keywords" content="NetWork,HTTP," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="AT0M">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2021/01/15/HTTP请求头响应头详解/"/>
+
+
+<meta name="description" content="0. HTTP 请求头 AcceptAccept:text&#x2F;html 浏览器可以接受服务器回发的类型为 text&#x2F;htmlAccept: *&#x2F;*   代表浏览器可以处理所有类型,(一般浏览器发给服务器都是发这个) Accept-Encoding Accept-Encoding: gzip, deflate 浏览器声明可以接收的编码方法，通常指定压缩方法，是否支持压缩，支持什么压缩方法（gzip,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP 请求头&#x2F;响应头详解">
+<meta property="og:url" content="http://yoursite.com/2021/01/15/HTTP%E8%AF%B7%E6%B1%82%E5%A4%B4%E5%93%8D%E5%BA%94%E5%A4%B4%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="AT0M">
+<meta property="og:description" content="0. HTTP 请求头 AcceptAccept:text&#x2F;html 浏览器可以接受服务器回发的类型为 text&#x2F;htmlAccept: *&#x2F;*   代表浏览器可以处理所有类型,(一般浏览器发给服务器都是发这个) Accept-Encoding Accept-Encoding: gzip, deflate 浏览器声明可以接收的编码方法，通常指定压缩方法，是否支持压缩，支持什么压缩方法（gzip,">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-15T06:23:00.000Z">
+<meta property="article:modified_time" content="2021-02-19T06:56:21.973Z">
+<meta property="article:author" content="AT0M">
+<meta property="article:tag" content="NetWork">
+<meta property="article:tag" content="HTTP">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: true
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> HTTP 请求头/响应头详解 - AT0M </title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">AT0M</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          HTTP 请求头/响应头详解
+        
+      </h1>
+
+      <time class="post-time">
+          1月 15 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h4 id="0-HTTP-请求头"><a href="#0-HTTP-请求头" class="headerlink" title="0. HTTP 请求头"></a>0. HTTP 请求头</h4><ol start="0">
+<li><code>Accept</code><br><code>Accept:text/html</code> 浏览器可以接受服务器回发的类型为 <code>text/html</code><br><code>Accept: */*</code>   代表浏览器可以处理所有类型,(一般浏览器发给服务器都是发这个)</li>
+<li><code>Accept-Encoding</code><br> <code>Accept-Encoding: gzip, deflate</code> 浏览器声明可以接收的编码方法，通常指定压缩方法，是否支持压缩，支持什么压缩方法（<code>gzip</code>, <code>deflate</code>, <code>br</code>），（注意：这不是只字符编码）</li>
+<li><code>Accept-Language</code><br> <code>Accept-Language:zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6</code> 浏览器声明可以接收的语言。</li>
+<li><code>Connection</code><br>  <code>Connection: keep-alive</code> 当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，如果客户端再次访问这个服务器上的网页，会继续使用这一条已经建立的连接。<br>  <code>Connection: close</code> 代表一个<code>Request</code>完成后，客户端和服务器之间用于传输HTTP数据的TCP连接会关闭， 当客户端再次发送<code>Request</code>，需要重新建立TCP连接。</li>
+<li><code>Host</code>（发送请求必须的内容）<br> <code>Host:https://www.google.com.hk/</code> 请求报头域主要用于指定被请求资源的Internet主机和端口号，它通常从HTTP URL中提取出来的。</li>
+<li><code>Referer</code><br> <code>Referer:https://www.baidu.com/?tn=62095104_8_oem_dg</code> 请求头中包含以前的 web 页面，从中当前请求页面的链接，随后的地址。例如，Referer头允许服务器识别人们访问他们的位置，并且可以使用该数据进行分析，记录或优化缓存。</li>
+<li><code>User-Agent</code><br><code>User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36 Edg/88.0.705.50</code> 告诉HTTP服务器， 客户端使用的操作系统和浏览器的名称和版本。</li>
+<li><code>Cache-Control</code><br> <code>Cache-Control:private</code> 默认为<code>private</code> 响应只能够作为私有的缓存，不能再用户间共享<br> <code>Cache-Control:public</code> 响应会被缓存，并且在多用户间共享。正常情况, 如果要求HTTP认证,响应会自动设置为 private<br> <code>Cache-Control:must-revalidate</code> 响应在特定条件下会被重用，以满足接下来的请求，但是它必须到服务器端去验证它是不是仍然是最新的。<br> <code>Cache-Control:no-cache</code>  响应不会被缓存,而是实时向服务器端请求资源。<br> <code>Cache-Control:max-age=10</code> 设置缓存最大的有效时间，但是这个参数定义的是时间大小（比如：60）而不是确定的时间点。单位是[秒 seconds]。<br> <code>Cache-Control:no-store</code> 在任何条件下，响应都不会被缓存，并且不会被写入到客户端的磁盘里，这也是基于安全考虑的某些敏感的响应才会使用这个。</li>
+<li><code>Cookie</code><br> <code>Cookie</code>是用来存储一些用户信息以便让服务器辨别用户身份的（大多数需要登录的网站上面会比较常见），比如cookie会存储一些用户的用户名和密码，当用户登录后就会在客户端产生一个cookie来存储相关信息，这样浏览器通过读取cookie的信息去服务器上验证并通过后会判定你是合法用户，从而允许查看相应网页。当然cookie里面的数据不仅仅是上述范围，还有很多信息可以存储是cookie里面，比如sessionid等。<br>10 .<code>Range</code>（用于断点续传）<br> <code>Range:bytes=0-5</code> 指定第一个字节的位置和最后一个字节的位置。用于告诉服务器自己想取对象的哪部分。</li>
+<li><code>dnt</code><br>Do Not Track:禁止追踪是否设置1(true)/0(false)</li>
+</ol>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/NetWork/">NetWork</a>
+		  
+			<a href="/tags/HTTP/">HTTP</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2021/01/29/ElasticSearch/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">ElasticSearch 学习笔记</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2020/09/03/2020-09-03-HashMap%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
+        <span class="next-text nav-default">HashMap源码_构造函数</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2021
+    <span class="footer-author">AT0M.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

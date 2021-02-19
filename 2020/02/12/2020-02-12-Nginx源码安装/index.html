@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Nginx源码安装"/>
+
+
+
+
+  <meta name="keywords" content="Setting," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="AT0M">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2020/02/12/2020-02-12-Nginx源码安装/"/>
+
+
+<meta name="description" content="0.安装Nginx依赖包1yum install -y pcre-devel zlib-devel openssl-devel wget gcc tree vim  1.从Nginx官网下载并解压源码包12wget https:&#x2F;&#x2F;nginx.org&#x2F;download&#x2F;nginx-1.16.1.tar.gztar -zxvf nginx-1.16.1.tar.gz  2.Nginx编译前配置123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx源码安装">
+<meta property="og:url" content="http://yoursite.com/2020/02/12/2020-02-12-Nginx%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="AT0M">
+<meta property="og:description" content="0.安装Nginx依赖包1yum install -y pcre-devel zlib-devel openssl-devel wget gcc tree vim  1.从Nginx官网下载并解压源码包12wget https:&#x2F;&#x2F;nginx.org&#x2F;download&#x2F;nginx-1.16.1.tar.gztar -zxvf nginx-1.16.1.tar.gz  2.Nginx编译前配置123">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-12T07:56:00.000Z">
+<meta property="article:modified_time" content="2021-02-19T06:56:21.874Z">
+<meta property="article:author" content="AT0M">
+<meta property="article:tag" content="Setting">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: true
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Nginx源码安装 - AT0M </title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">AT0M</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Nginx源码安装
+        
+      </h1>
+
+      <time class="post-time">
+          2月 12 2020
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h3 id="0-安装Nginx依赖包"><a href="#0-安装Nginx依赖包" class="headerlink" title="0.安装Nginx依赖包"></a>0.安装Nginx依赖包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y pcre-devel zlib-devel openssl-devel wget gcc tree vim</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-从Nginx官网下载并解压源码包"><a href="#1-从Nginx官网下载并解压源码包" class="headerlink" title="1.从Nginx官网下载并解压源码包"></a>1.从Nginx官网下载并解压源码包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://nginx.org/download/nginx-1.16.1.tar.gz</span><br><span class="line">tar -zxvf nginx-1.16.1.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Nginx编译前配置"><a href="#2-Nginx编译前配置" class="headerlink" title="2.Nginx编译前配置"></a>2.Nginx编译前配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> nginx-1.16.1</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/nginx --with-http_ssl_module</span><br><span class="line"></span><br><span class="line">--prefix:配置configure脚本，软件的安装位置</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-进行安装编译"><a href="#3-进行安装编译" class="headerlink" title="3.进行安装编译"></a>3.进行安装编译</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-检查安装情况"><a href="#4-检查安装情况" class="headerlink" title="4.检查安装情况"></a>4.检查安装情况</h3><p>进入安装目录进行检查</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/nginx</span><br><span class="line"></span><br><span class="line"><span class="comment">#配置文件位置</span></span><br><span class="line">/usr/<span class="built_in">local</span>/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p>运行nginx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> sbin</span><br><span class="line">./nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-停止Nginx"><a href="#5-停止Nginx" class="headerlink" title="5.停止Nginx"></a>5.停止Nginx</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1. 立即停止Nginx服务</span></span><br><span class="line"> /usr/<span class="built_in">local</span>/nginx/sbin/nginx -s stop </span><br><span class="line"><span class="comment">#2.完成当前任务后停止</span></span><br><span class="line"> /usr/<span class="built_in">local</span>/nginx/sbin/nginx -s quit </span><br><span class="line"><span class="comment">#3.杀死Nginx进程</span></span><br><span class="line"> killall nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-Nginx添加到环境变量"><a href="#6-Nginx添加到环境变量" class="headerlink" title="6.Nginx添加到环境变量"></a>6.Nginx添加到环境变量</h3><p>使用软连接将<code>nginx</code>链接到<code>/usr/local/sbin</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/<span class="built_in">local</span>/nginx/sbin/nginx /usr/<span class="built_in">local</span>/sbin</span><br><span class="line">ll /usr/<span class="built_in">local</span>/sbin/ | grep <span class="string">"nginx"</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.显示当前环境变量`PATH`</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line"><span class="comment">#2.编辑`.bash_profile`文件</span></span><br><span class="line">	vim ~/.bashrc</span><br><span class="line"><span class="comment">#3.在`.bash_profile`文件末尾加入以下内容</span></span><br><span class="line">	<span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/nginx/sbin</span><br><span class="line"><span class="comment">#4.立即生效</span></span><br><span class="line">	<span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Setting/">Setting</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2020/02/17/SSH%E7%99%BB%E9%99%86/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">SSH登陆</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/08/07/2017-08-07-PE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3(0)/">
+        <span class="next-text nav-default">PE文件格式详解(0)</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2021
+    <span class="footer-author">AT0M.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

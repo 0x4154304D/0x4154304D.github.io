@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Homebrew更新源"/>
+
+
+
+
+  <meta name="keywords" content="Setting,Mac," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="AT0M">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2020/03/14/2020-03-14-Homebrew更新源/"/>
+
+
+<meta name="description" content="对Homebrew更新的话，需要更新四个模块的镜像  Homebrew Homebrew Core Homebrew-bottles Homebrew Cask  USTC包含上述的所有源，而其他家都缺少Cask源。 替换命令 1234567891011121314151617181920# 替换 Homebrewcd $(brew --repo)git remote set-url origin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Homebrew更新源">
+<meta property="og:url" content="http://yoursite.com/2020/03/14/2020-03-14-Homebrew%E6%9B%B4%E6%96%B0%E6%BA%90/index.html">
+<meta property="og:site_name" content="AT0M">
+<meta property="og:description" content="对Homebrew更新的话，需要更新四个模块的镜像  Homebrew Homebrew Core Homebrew-bottles Homebrew Cask  USTC包含上述的所有源，而其他家都缺少Cask源。 替换命令 1234567891011121314151617181920# 替换 Homebrewcd $(brew --repo)git remote set-url origin">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-13T22:56:29.000Z">
+<meta property="article:modified_time" content="2021-02-19T06:56:21.914Z">
+<meta property="article:author" content="AT0M">
+<meta property="article:tag" content="Setting">
+<meta property="article:tag" content="Mac">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: true
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Homebrew更新源 - AT0M </title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">AT0M</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Homebrew更新源
+        
+      </h1>
+
+      <time class="post-time">
+          3月 14 2020
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>对Homebrew更新的话，需要更新四个模块的镜像</p>
+<ul>
+<li>Homebrew</li>
+<li>Homebrew Core</li>
+<li>Homebrew-bottles</li>
+<li>Homebrew Cask</li>
+</ul>
+<p>USTC包含上述的所有源，而其他家都缺少Cask源。</p>
+<p>替换命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 替换 Homebrew</span></span><br><span class="line"><span class="built_in">cd</span> $(brew --repo)</span><br><span class="line">git remote <span class="built_in">set</span>-url origin https://mirrors.ustc.edu.cn/brew.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 替换 Homebrew Core</span></span><br><span class="line"><span class="built_in">cd</span> $(brew --repo homebrew/core)</span><br><span class="line">git remote <span class="built_in">set</span>-url origin https://mirrors.ustc.edu.cn/homebrew-core.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 替换 Homebrew Cask</span></span><br><span class="line"><span class="built_in">cd</span> $(brew --repo homebrew/cask)</span><br><span class="line">git remote <span class="built_in">set</span>-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 替换 Homebrew-bottles</span></span><br><span class="line"><span class="comment"># 对于 bash 用户：</span></span><br><span class="line"><span class="built_in">echo</span><span class="string">'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles'</span>&gt;&gt; ~/.bash_profile</span><br><span class="line"><span class="built_in">source</span>~/.bash_profile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对于 zsh 用户：</span></span><br><span class="line"><span class="built_in">echo</span><span class="string">'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles'</span>&gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">source</span>~/.zshrc</span><br></pre></td></tr></table></figure>
+
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Setting/">Setting</a>
+		  
+			<a href="/tags/Mac/">Mac</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2020/03/14/2020-03-14-JDK%E9%85%8D%E7%BD%AE/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">JDK配置</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2020/03/12/iptables%20%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/">
+        <span class="next-text nav-default">iptables 配置详解</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2021
+    <span class="footer-author">AT0M.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

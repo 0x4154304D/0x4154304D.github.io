@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="PE文件格式详解(0)"/>
+
+
+
+
+  <meta name="keywords" content="PE,Reverse," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="AT0M">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/08/07/2017-08-07-PE文件格式详解(0)/"/>
+
+
+<meta name="description" content="0.介绍PE是Windows操作系统使用的可执行文件格式。它是微软在UNIX平台的COFF（Common Object File Formxat,通用对象格式）基础上而成的（在Windows开发环境中，PE格式也称为PE&#x2F;COFF格式。）。最初（正如Portable这个单词所代表的那样）设计用来提高程序在不同操作系统上的移植性，但实际上这种文件格式仅使用在Windows系列的操作系统。  PE文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PE文件格式详解(0)">
+<meta property="og:url" content="http://yoursite.com/2017/08/07/2017-08-07-PE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3(0)/index.html">
+<meta property="og:site_name" content="AT0M">
+<meta property="og:description" content="0.介绍PE是Windows操作系统使用的可执行文件格式。它是微软在UNIX平台的COFF（Common Object File Formxat,通用对象格式）基础上而成的（在Windows开发环境中，PE格式也称为PE&#x2F;COFF格式。）。最初（正如Portable这个单词所代表的那样）设计用来提高程序在不同操作系统上的移植性，但实际上这种文件格式仅使用在Windows系列的操作系统。  PE文件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/0x4154304D/img/master/20200315204115.png">
+<meta property="article:published_time" content="2017-08-07T02:58:29.000Z">
+<meta property="article:modified_time" content="2021-02-19T06:56:21.874Z">
+<meta property="article:author" content="AT0M">
+<meta property="article:tag" content="PE">
+<meta property="article:tag" content="Reverse">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/0x4154304D/img/master/20200315204115.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: true
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> PE文件格式详解(0) - AT0M </title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">AT0M</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          PE文件格式详解(0)
+        
+      </h1>
+
+      <time class="post-time">
+          8月 07 2017
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h3 id="0-介绍"><a href="#0-介绍" class="headerlink" title="0.介绍"></a>0.介绍</h3><p>PE是Windows操作系统使用的可执行文件格式。它是微软在UNIX平台的COFF（Common Object File Formxat,通用对象格式）基础上而成的（在Windows开发环境中，PE格式也称为PE/COFF格式。）。最初（正如Portable这个单词所代表的那样）设计用来提高程序在不同操作系统上的移植性，但实际上这种文件格式仅使用在Windows系列的操作系统。</p>
+<p> PE文件是指32位的可执行文件，也称为PE32。<strong>64位的可执行文件称为PE+或PE32+，是PE（PE32）的一种扩展形式（注意不是PE64）。</strong></p>
+<p>事实上，一个文件是否是PE文件与其扩展名无关，即表明PE文件可以是任何扩展名。</p>
+<hr>
+<h3 id="1-PE文件格式"><a href="#1-PE文件格式" class="headerlink" title="1.PE文件格式"></a>1.PE文件格式</h3><p>PE文件格式种类：</p>
+<ul>
+<li>可执行系列：EXE/SCR</li>
+<li>驱动程序系列：SYS/VXD</li>
+<li>库系列：DLL/OCX/CPL/DRV</li>
+<li>对象文件系列：OBJ</li>
+</ul>
+<p>注：严格来讲，OBJ（对象）文件之外的所有文件都是可执行的。DLL/SYS文件等虽然不能直接在Shell（Explorer.exe)中运行，但可以使用其他方法（调试器、服务等）执行。</p>
+<hr>
+<h3 id="2-基本结构"><a href="#2-基本结构" class="headerlink" title="2.基本结构"></a>2.基本结构</h3><p>从DOS头（DOS Header）到节区头（Section Header）是PE头部分，其下的节区合成PE体。文件中使用偏移（offset），内存中使用VA（Vitual Address，虚拟地址）来表示位置。文件加载到内存时，情况就会发生变化（节区的大小、位置等）。文件的内容一般可分为代码（.text）、数据（.data）、资源（.rsrc）节，分别保存。</p>
+<p> 注：有不同种开发工具（VB/VC++/…）与编译选项，节区的名称、大小、个数、储存的内容都是不同的。<strong>它们根据不同的用途分类保存到不同的节中。</strong></p>
+<p>各节区头定义了各节区在文件或内存中的大小、位置、属性等。</p>
+<p>   PE头与各节区的尾部存在一个区域，称为NULL填充（NULL padding）。（PE文件中文件/内存中节区的起始位置应该在各文件/内存最小单位的倍数位置之上，空白区域将用NULL填充。）</p>
+<p><img src="https://raw.githubusercontent.com/0x4154304D/img/master/20200315204115.png" alt=""></p>
+<hr>
+<h3 id="3-VA-amp-RVA"><a href="#3-VA-amp-RVA" class="headerlink" title="3.VA&amp;RVA"></a>3.VA&amp;RVA</h3><p>VA指的是进程虚拟内存的绝对地址，RVA(Relative Virtual Address,相对虚拟地址)指从某个基准位置（ImageBase）开始的相对地址。VA与RVA满足下面的换算关系。</p>
+<p><strong>RVA+ImageBase=VA</strong></p>
+<p>PE头内部大多都以RVA形式存在，原因在于，PE文件（主要是DLL）加载到进程虚拟内存的特定位置时，该位置可能已经加载了其他的PE文件（DLL）。此时必须通过重定位将其加载到其他空白的位置，若PE头信息使用的是VA，则无法正常访问。因此使用了RVA来定位信息，即使发生了成定位，只要相对于基准位置的相对地址没有变化，就能正常访问到指定信息，就不会出现任何问题。</p>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/PE/">PE</a>
+		  
+			<a href="/tags/Reverse/">Reverse</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2020/02/12/2020-02-12-Nginx%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Nginx源码安装</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2021
+    <span class="footer-author">AT0M.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

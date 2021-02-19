@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Linux安装MySQL"/>
+
+
+
+
+  <meta name="keywords" content="Setting," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="AT0M">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2020/06/09/installmysql(src)/"/>
+
+
+<meta name="description" content="0. 下载安装包下载地址：https:&#x2F;&#x2F;dev.mysql.com&#x2F;downloads&#x2F;mysql&#x2F; 选择操作系统 Linux-Generic ，此处下载的是 mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz 。  1. 卸载系统自带的 MariaDB （如果系统附带）12345#查询已经安装的 MariaDB 的安装包[root@VM-0-10-centos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux安装MySQL">
+<meta property="og:url" content="http://yoursite.com/2020/06/09/installmysql(src)/index.html">
+<meta property="og:site_name" content="AT0M">
+<meta property="og:description" content="0. 下载安装包下载地址：https:&#x2F;&#x2F;dev.mysql.com&#x2F;downloads&#x2F;mysql&#x2F; 选择操作系统 Linux-Generic ，此处下载的是 mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz 。  1. 卸载系统自带的 MariaDB （如果系统附带）12345#查询已经安装的 MariaDB 的安装包[root@VM-0-10-centos">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-09T09:27:43.000Z">
+<meta property="article:modified_time" content="2021-02-19T06:56:21.977Z">
+<meta property="article:author" content="AT0M">
+<meta property="article:tag" content="Setting">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: true
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Linux安装MySQL - AT0M </title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">AT0M</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Linux安装MySQL
+        
+      </h1>
+
+      <time class="post-time">
+          6月 09 2020
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h3 id="0-下载安装包"><a href="#0-下载安装包" class="headerlink" title="0. 下载安装包"></a>0. 下载安装包</h3><p>下载地址：<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a></p>
+<p>选择操作系统 Linux-Generic ，此处下载的是 mysql-8.0.21-linux-glibc2.12-x86_64.tar.xz 。</p>
+<hr>
+<h3 id="1-卸载系统自带的-MariaDB-（如果系统附带）"><a href="#1-卸载系统自带的-MariaDB-（如果系统附带）" class="headerlink" title="1. 卸载系统自带的 MariaDB （如果系统附带）"></a>1. 卸载系统自带的 MariaDB （如果系统附带）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查询已经安装的 MariaDB 的安装包</span></span><br><span class="line">[root@VM-0-10-centos ~]<span class="comment"># rpm -qa | grep mariadb</span></span><br><span class="line">[root@VM-0-10-centos ~]<span class="comment"># </span></span><br><span class="line"><span class="comment">#这里系统没有附带所以不用操作，如果系统附带，用下面命令将其卸载</span></span><br><span class="line">yum -y remove mariadb-xxxx (xxxx是系统附带的mariadb安装包)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="2-解压安装包"><a href="#2-解压安装包" class="headerlink" title="2. 解压安装包"></a>2. 解压安装包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-0-10-centos ~]<span class="comment"># tar -Jxvf /root/mysql-8.0.21-linux-glibc2.12-x86_64.ta</span></span><br><span class="line">r.xz</span><br><span class="line">root@VM-0-10-centos ~]<span class="comment"># mv mysql-8.0.21-linux-glibc2.12-x86_64 /usr/local/mysql</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="3-创建MySQL用户和用户组"><a href="#3-创建MySQL用户和用户组" class="headerlink" title="3. 创建MySQL用户和用户组"></a>3. 创建MySQL用户和用户组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-0-10-centos ~]<span class="comment"># groupadd mysql</span></span><br><span class="line">[root@VM-0-10-centos ~]<span class="comment"># useradd -g mysql mysql</span></span><br><span class="line"><span class="comment"># 新建MySQL的Data文件夹</span></span><br><span class="line">[root@VM-0-10-centos ~]<span class="comment"># mkdir /usr/local/mysql/data</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="4-修改MySQL目录归属用户"><a href="#4-修改MySQL目录归属用户" class="headerlink" title="4. 修改MySQL目录归属用户"></a>4. 修改MySQL目录归属用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-0-10-centos ~]<span class="comment"># cd /usr/local/mysql</span></span><br><span class="line">[root@VM-0-10-centos ~]<span class="comment"># chown -R mysql:mysql ./</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="5-创建MySQL配置文件"><a href="#5-创建MySQL配置文件" class="headerlink" title="5. 创建MySQL配置文件"></a>5. 创建MySQL配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在 /etc 目录下创建 my.cnf 文件</span></span><br><span class="line">[root@VM-0-10-centos ~]<span class="comment"># touch /etc/my.cnf</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在文件中写入如下配置</span></span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line"><span class="comment"># 设置mysql客户端默认字符集</span></span><br><span class="line"><span class="attribute">default-character-set</span>=utf8</span><br><span class="line"><span class="attribute">socket</span>=/var/lib/mysql/mysql.sock</span><br><span class="line">[mysqld]</span><br><span class="line">skip-name-resolve</span><br><span class="line"><span class="comment">#设置3306端⼝</span></span><br><span class="line">port = 3306</span><br><span class="line"><span class="attribute">socket</span>=/var/lib/mysql/mysql.sock</span><br><span class="line"><span class="comment"># 设置mysql的安装⽬录</span></span><br><span class="line"><span class="attribute">basedir</span>=/usr/local/mysql</span><br><span class="line"><span class="comment"># 设置mysql数据库的数据的存放⽬录</span></span><br><span class="line"><span class="attribute">datadir</span>=/usr/local/mysql/data</span><br><span class="line"><span class="comment"># 允许最⼤连接数</span></span><br><span class="line"><span class="attribute">max_connections</span>=200</span><br><span class="line"><span class="comment"># 服务端使⽤的字符集默认为8⽐特编码的latin1字符集</span></span><br><span class="line"><span class="attribute">character-set-server</span>=utf8</span><br><span class="line"><span class="comment"># 创建新表时将使⽤的默认存储引擎</span></span><br><span class="line"><span class="attribute">default-storage-engine</span>=INNODB</span><br><span class="line"><span class="attribute">lower_case_table_names</span>=1</span><br><span class="line"><span class="attribute">max_allowed_packet</span>=16M</span><br></pre></td></tr></table></figure>
+
+<p>创建默认文档存储目录，并修改权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-0-10-centos ~]<span class="comment"># mkdir /var/lib/mysql</span></span><br><span class="line">[root@VM-0-10-centos ~]<span class="comment"># chmod 777 /val/lib/mysql</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="6-安装MySQL"><a href="#6-安装MySQL" class="headerlink" title="6.安装MySQL"></a>6.安装MySQL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-0-10-centos ~]<span class="comment">#cd /usr/local/mysql</span></span><br><span class="line">[root@VM-0-10-centos ~]<span class="comment">#./bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data</span></span><br></pre></td></tr></table></figure>
+
+<p>一定要记住初始化的默认密码 ！ ！ ！</p>
+<hr>
+<h3 id="7-复制启动脚本到资源目录"><a href="#7-复制启动脚本到资源目录" class="headerlink" title="7.复制启动脚本到资源目录"></a>7.复制启动脚本到资源目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-0-10-centos ~]<span class="comment"># cp ./support-files/mysql.server /etc/init.d/mysqld</span></span><br></pre></td></tr></table></figure>
+
+<p>修改 /etc/init.d/mysqld ，修改文件中 basedir 和 datadir 对应的实际目录</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">basedir</span>=/usr/local/mysql</span><br><span class="line"><span class="attr">datadir</span>=/usr/local/mysql/data</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="8-设置启动服务及开机自启"><a href="#8-设置启动服务及开机自启" class="headerlink" title="8. 设置启动服务及开机自启"></a>8. 设置启动服务及开机自启</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#增加 mysqld 服务控制脚本的执行权限</span></span><br><span class="line">[root@VM-0-10-centos ~]<span class="comment"># chmod +x /etc/init.d/mysqld</span></span><br><span class="line"><span class="comment">#将 mysqld 服务加入到系统服务</span></span><br><span class="line">[root@VM-0-10-centos ~]<span class="comment"># chkconfig --add mysqld</span></span><br><span class="line"><span class="comment">#检查 mysqld 服务是否已经生效</span></span><br><span class="line">[root@VM-0-10-centos ~]<span class="comment"># chkconfig --list mysqld</span></span><br><span class="line">mysqld		0:off  1:off  2:on  3:on  4:on  5:on  6:off</span><br></pre></td></tr></table></figure>
+
+<p>这表明 mysqld 服务生效， 在2，3，4，5运行级别随系统启动而自动启动，以后可以直接使用 service 命令控制 mysqld 的状态</p>
+<hr>
+<h3 id="9-启动MySQL并加入环境变量"><a href="#9-启动MySQL并加入环境变量" class="headerlink" title="9. 启动MySQL并加入环境变量"></a>9. 启动MySQL并加入环境变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-0-10-centos ~]<span class="comment"># service mysqld start</span></span><br></pre></td></tr></table></figure>
+
+<p>将 MySQL 的 bin 目录加入到 PATH 环境变量中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/mysql/bin</span><br></pre></td></tr></table></figure>
+
+<p>执行如下命令使得环境变量生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-0-10-centos ~]<span class="comment"># source ~/.bash_profile</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="10-登陆MySQL修改默认密码"><a href="#10-登陆MySQL修改默认密码" class="headerlink" title="10. 登陆MySQL修改默认密码"></a>10. 登陆MySQL修改默认密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM-0-10-centos ~]<span class="comment"># mysql -u root -p</span></span><br><span class="line">Enter password:</span><br></pre></td></tr></table></figure>
+
+<p>修改默认密码为12345678</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;alter user user() identified by &quot;12345678&quot;;</span><br><span class="line">mysql&gt;flush privileges;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="11-设置远程登陆"><a href="#11-设置远程登陆" class="headerlink" title="11.设置远程登陆"></a>11.设置远程登陆</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use mysql</span><br><span class="line">Reading table information for completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; UPDATE user SET user.Host&#x3D;&#39;%&#39; WHERE user.User&#x3D;&#39;root&#39;;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; flush privileges;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Setting/">Setting</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2020/06/09/2020-06-09-CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85MySQL(RPM)/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">CentOS7下安装MySQL(RPM)</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2020/04/19/2020-04-19-Integer.numberOfLeadingZero%E8%AF%A6%E8%A7%A3/">
+        <span class="next-text nav-default">Integer.numberOfLeadingZero详解</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2021
+    <span class="footer-author">AT0M.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
