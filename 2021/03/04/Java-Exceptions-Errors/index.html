@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Java Exceptions & Errors"/>
+
+
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+  <link rel="alternate" href="/default" title="AT0M">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2021/03/04/Java-Exceptions-Errors/"/>
+
+
+<meta name="description" content="1. Java 异常类的层次结构图片摘自 Simple Snippets   从图中可以看出， Exceptions 类和 Errors 类都继承于 Throwable 类。  2. Java Exception直接上源码（摘自 JDK 11.0.10 ） 12345678910111213141516171819202122232425262728293031323334353637383940">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Exceptions &amp; Errors">
+<meta property="og:url" content="http://yoursite.com/2021/03/04/Java-Exceptions-Errors/index.html">
+<meta property="og:site_name" content="AT0M">
+<meta property="og:description" content="1. Java 异常类的层次结构图片摘自 Simple Snippets   从图中可以看出， Exceptions 类和 Errors 类都继承于 Throwable 类。  2. Java Exception直接上源码（摘自 JDK 11.0.10 ） 12345678910111213141516171819202122232425262728293031323334353637383940">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/0x4154304D/img/master/20210304230228.png">
+<meta property="article:published_time" content="2021-03-04T14:58:00.000Z">
+<meta property="article:modified_time" content="2021-03-04T16:11:34.570Z">
+<meta property="article:author" content="AT0M">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/0x4154304D/img/master/20210304230228.png">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: true
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Java Exceptions & Errors - AT0M </title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">AT0M</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Java Exceptions & Errors
+        
+      </h1>
+
+      <time class="post-time">
+          3月 04 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h2 id="1-Java-异常类的层次结构"><a href="#1-Java-异常类的层次结构" class="headerlink" title="1. Java 异常类的层次结构"></a>1. Java 异常类的层次结构</h2><p>图片摘自 <a href="https://simplesnippets.tech/exception-handling-in-java-part-1/" target="_blank" rel="noopener">Simple Snippets</a> </p>
+<p><img src="https://raw.githubusercontent.com/0x4154304D/img/master/20210304230228.png" alt=""></p>
+<p>从图中可以看出， <code>Exceptions</code> 类和 <code>Errors</code> 类都继承于 <code>Throwable</code> 类。</p>
+<hr>
+<h2 id="2-Java-Exception"><a href="#2-Java-Exception" class="headerlink" title="2. Java Exception"></a>2. Java Exception</h2><p>直接上源码（摘自 JDK 11.0.10 ）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Exception</span> <span class="keyword">extends</span> <span class="title">Throwable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">3387516993124229948L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Constructs a new exception with &#123;<span class="doctag">@code</span> null&#125; as its detail message.</span></span><br><span class="line"><span class="comment">     * The cause is not initialized, and may subsequently be initialized by a</span></span><br><span class="line"><span class="comment">     * call to &#123;<span class="doctag">@link</span> #initCause&#125;.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Exception</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Constructs a new exception with the specified detail message.  The</span></span><br><span class="line"><span class="comment">     * cause is not initialized, and may subsequently be initialized by</span></span><br><span class="line"><span class="comment">     * a call to &#123;<span class="doctag">@link</span> #initCause&#125;.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span>   message   the detail message. The detail message is saved for</span></span><br><span class="line"><span class="comment">     *          later retrieval by the &#123;<span class="doctag">@link</span> #getMessage()&#125; method.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Exception</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Constructs a new exception with the specified detail message and</span></span><br><span class="line"><span class="comment">     * cause.  &lt;p&gt;Note that the detail message associated with</span></span><br><span class="line"><span class="comment">     * &#123;<span class="doctag">@code</span> cause&#125; is &lt;i&gt;not&lt;/i&gt; automatically incorporated in</span></span><br><span class="line"><span class="comment">     * this exception's detail message.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span>  message the detail message (which is saved for later retrieval</span></span><br><span class="line"><span class="comment">     *         by the &#123;<span class="doctag">@link</span> #getMessage()&#125; method).</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span>  cause the cause (which is saved for later retrieval by the</span></span><br><span class="line"><span class="comment">     *         &#123;<span class="doctag">@link</span> #getCause()&#125; method).  (A &#123;<span class="doctag">@code</span> null&#125; value is</span></span><br><span class="line"><span class="comment">     *         permitted, and indicates that the cause is nonexistent or</span></span><br><span class="line"><span class="comment">     *         unknown.)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@since</span>  1.4</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Exception</span><span class="params">(String message, Throwable cause)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(message, cause);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Constructs a new exception with the specified cause and a detail</span></span><br><span class="line"><span class="comment">     * message of &#123;<span class="doctag">@code</span> (cause==null ? null : cause.toString())&#125; (which</span></span><br><span class="line"><span class="comment">     * typically contains the class and detail message of &#123;<span class="doctag">@code</span> cause&#125;).</span></span><br><span class="line"><span class="comment">     * This constructor is useful for exceptions that are little more than</span></span><br><span class="line"><span class="comment">     * wrappers for other throwables (for example, &#123;<span class="doctag">@link</span></span></span><br><span class="line"><span class="comment">     * java.security.PrivilegedActionException&#125;).</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span>  cause the cause (which is saved for later retrieval by the</span></span><br><span class="line"><span class="comment">     *         &#123;<span class="doctag">@link</span> #getCause()&#125; method).  (A &#123;<span class="doctag">@code</span> null&#125; value is</span></span><br><span class="line"><span class="comment">     *         permitted, and indicates that the cause is nonexistent or</span></span><br><span class="line"><span class="comment">     *         unknown.)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@since</span>  1.4</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Exception</span><span class="params">(Throwable cause)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(cause);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Constructs a new exception with the specified detail message,</span></span><br><span class="line"><span class="comment">     * cause, suppression enabled or disabled, and writable stack</span></span><br><span class="line"><span class="comment">     * trace enabled or disabled.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span>  message the detail message.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> cause the cause.  (A &#123;<span class="doctag">@code</span> null&#125; value is permitted,</span></span><br><span class="line"><span class="comment">     * and indicates that the cause is nonexistent or unknown.)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> enableSuppression whether or not suppression is enabled</span></span><br><span class="line"><span class="comment">     *                          or disabled</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> writableStackTrace whether or not the stack trace should</span></span><br><span class="line"><span class="comment">     *                           be writable</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@since</span> 1.7</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">Exception</span><span class="params">(String message, Throwable cause,</span></span></span><br><span class="line"><span class="function"><span class="params">                        <span class="keyword">boolean</span> enableSuppression,</span></span></span><br><span class="line"><span class="function"><span class="params">                        <span class="keyword">boolean</span> writableStackTrace)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(message, cause, enableSuppression, writableStackTrace);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        在  <code>Exception(异常)</code> 类中，可以分为 <code>Check Exceptions</code> 和 <code>Uncheck Exceptions(Runtime Exception)</code> 。异常可由程序自行处理。其中检查异常是在程序编写过程中必须处理的（不处理无法通过编译），不受检查异常在编译过程中无法发现。</p>
+<h3 id="2-1-Check-Exceptions"><a href="#2-1-Check-Exceptions" class="headerlink" title="2.1 Check Exceptions"></a>2.1 Check Exceptions</h3><p>​        这类异常必须由 <code>try / catch</code> 进行捕获，如果不进行捕获，则不能通过编译。常见的 <code>Check Exceptions</code>有： <code>IOException</code> / <code>ClassNotFoundExcepiton</code> / <code>SQLException</code> / …</p>
+<h3 id="2-2-Uncheck-Exceptions"><a href="#2-2-Uncheck-Exceptions" class="headerlink" title="2.2 Uncheck Exceptions"></a>2.2 Uncheck Exceptions</h3><p>​        <code>RuntimException</code>及其子类都属于 <code>Uncheck Exception</code>。常见的  <code>Uncheck Exception</code> 有：<code>NullPointerException</code>、<code>NumberFormatException(字符串转换为数字)</code>、<code>ArrayIndexOutOfBoundsException(数组越界)</code>、<code>ClassCastException(类型转换错误)</code>、<code>ArithmeticException(算术错误)</code></p>
+<hr>
+<h2 id="3-Errors"><a href="#3-Errors" class="headerlink" title="3. Errors"></a>3. Errors</h2><p>​        <code>Error</code>：<code>Error</code>属于程序无法处理的错误，这类错误无法用 <code>catch</code>来进行捕获。比如 JVM 虚拟机错误 / JVM 虚拟机内存不足 / 类定义错误 / …  当发生这种异常时， JVM 一般会线程终止。</p>
+<hr>
+<h2 id="4-try-catch-finall"><a href="#4-try-catch-finall" class="headerlink" title="4. try - catch -finall"></a>4. try - catch -finall</h2><ul>
+<li><code>try</code>: 用于执行可能出现异常的代码块，后面会跟着 <code>[0-n]</code>个<code>catch</code>块</li>
+<li><code>catch</code>: 用于处理 <code>try</code>块中捕获到的异常</li>
+<li><code>finally</code>: 用于之后的工作，不论是否抛出异常，<code>finally</code>块内的代码都会被执行</li>
+</ul>
+<p>特殊情况（<code>finally</code> 块不执行）： – 参考 Java Guide Blog</p>
+<ul>
+<li><p>在 <code>try</code> 或 <code>finally</code>块中用了 <code>System.exit(int)</code>退出程序。如果 <code>System.exit(int)</code> 在异常语句之后，<code>finally</code> 还是会被执行</p>
+</li>
+<li><p>程序所在的线程死亡</p>
+</li>
+<li><p>CPU 关闭</p>
+</li>
+</ul>
+<hr>
+<h2 id="5-try-with-resources"><a href="#5-try-with-resources" class="headerlink" title="5. try - with - resources"></a>5. try - with - resources</h2><p>​        相较于 <code>try - catch</code> 语句 <code>try - with - resources</code>主要用于关闭资源（即实现 <code>java.lang.AutoCloseable</code>或者 <code>java.io.Closeable</code> 的对象）<br>​        如果有多个资源需要关闭时，多个资源之间需要使用 分号 分隔。</p>
+<hr>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/Java/">Java</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2021/03/03/String-StringBuilder-StringBuffer/">
+        <span class="next-text nav-default">String / StringBuilder / StringBuffer</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2017 -
+    
+    2021
+    <span class="footer-author">AT0M.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
