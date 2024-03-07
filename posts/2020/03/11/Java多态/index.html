@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Java多态 | AT0M</title><meta name="author" content="AT0M"><meta name="copyright" content="AT0M"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在面向对象程序语言中，多态的是一项重要的基本特征。通过多态的技术可以在程序设计中，使得程序设计更为简单，清晰。比如动物有猫，狗，猪等等。除去它们所特有的特点以外，他们也存在共性，比如都会进食，休息，行走等行为。那么在OOP中，多态从此所引入的。 0.向上转型在程序设计的过程中我们不知道所操作对象的具体行为，但是知道它所拥有的行为。比如就动物而言，在编写程序的过程中我们知道，猫吃鱼，狗吃肉。但是动物">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java多态">
+<meta property="og:url" content="https://0x4154304d.github.io/posts/2020/03/11/Java%E5%A4%9A%E6%80%81/index.html">
+<meta property="og:site_name" content="AT0M">
+<meta property="og:description" content="在面向对象程序语言中，多态的是一项重要的基本特征。通过多态的技术可以在程序设计中，使得程序设计更为简单，清晰。比如动物有猫，狗，猪等等。除去它们所特有的特点以外，他们也存在共性，比如都会进食，休息，行走等行为。那么在OOP中，多态从此所引入的。 0.向上转型在程序设计的过程中我们不知道所操作对象的具体行为，但是知道它所拥有的行为。比如就动物而言，在编写程序的过程中我们知道，猫吃鱼，狗吃肉。但是动物">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2023/02/08/15/10/sculpture-7776861_1280.jpg">
+<meta property="article:published_time" content="2020-03-11T14:03:23.000Z">
+<meta property="article:modified_time" content="2024-03-05T14:51:30.000Z">
+<meta property="article:author" content="AT0M">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="面向对象">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2023/02/08/15/10/sculpture-7776861_1280.jpg"><link rel="shortcut icon" href="../../../../../img/favicon.ico"><link rel="canonical" href="https://0x4154304d.github.io/posts/2020/03/11/Java%E5%A4%9A%E6%80%81/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../../css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java多态',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-05 22:51:30'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://avatars.githubusercontent.com/u/37744507" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="index.html"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-blog"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/leetcode/"><i class="fa-fw fas fa-code"></i><span> Algorithm</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友鏈</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 關於我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.pixabay.com/photo/2023/02/08/15/10/sculpture-7776861_1280.jpg')"><nav id="nav"><span id="blog-info"><a href="index.html" title="AT0M"><span class="site-name">AT0M</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="index.html"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-blog"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/leetcode/"><i class="fa-fw fas fa-code"></i><span> Algorithm</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友鏈</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 關於我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java多态</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2020-03-11T14:03:23.000Z" title="Created 2020-03-11 22:03:23">2020-03-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-03-05T14:51:30.000Z" title="Updated 2024-03-05 22:51:30">2024-03-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java多态"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>在面向对象程序语言中，多态的是一项重要的基本特征。通过多态的技术可以在程序设计中，使得程序设计更为简单，清晰。比如动物有猫，狗，猪等等。除去它们所特有的特点以外，他们也存在共性，比如都会进食，休息，行走等行为。那么在OOP中，多态从此所引入的。</p>
+<h3 id="0-向上转型"><a href="#0-向上转型" class="headerlink" title="0.向上转型"></a>0.向上转型</h3><p>在程序设计的过程中我们不知道所操作对象的具体行为，但是知道它所拥有的行为。比如就动物而言，在编写程序的过程中我们知道，猫吃鱼，狗吃肉。但是动物吃什么是我们不知道的。但在面向过程设计中，会采用判断对象类型，然后根据类型选择调用吃什么。在OOP中，这种问题解决轻而易举。</p>
+<p>代码栗子🌰</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">food</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sleep</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> <span class="keyword">extends</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">food</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Eat fish&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sleep</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Cat sleep&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">food</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Eat meet&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sleep</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Dog sleep&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">temp</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">howToEat</span><span class="params">(Animal a)</span> &#123;</span><br><span class="line">        a.food();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">howToSleep</span><span class="params">(Animal a)</span> &#123;</span><br><span class="line">        a.sleep();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Dog</span> <span class="variable">d</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br><span class="line">        <span class="type">Cat</span> <span class="variable">c</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Cat</span>();</span><br><span class="line">        howToEat(d);</span><br><span class="line">        howToEat(c);</span><br><span class="line">        howToSleep(d);</span><br><span class="line">        howToSleep(c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//result：</span></span><br><span class="line"><span class="comment">//Eat meet</span></span><br><span class="line"><span class="comment">//Eat fish</span></span><br><span class="line"><span class="comment">//Dog sleep</span></span><br><span class="line"><span class="comment">//Cat sleep</span></span><br></pre></td></tr></table></figure>
+
+<p>从上面的例子我们不难看出，如果加入一个新的类型比如Pig，那么直接创建新的类，并覆盖food和sleep方法就可以。如果在面向过程语言设计中，每当引入一个新的类型，那么就要增加一个新的函数，然后再加入到主函数中。这样维护起来的成本会大大增加。而多态的出现，在howToEat和howToSleep函数中的参数直接设置成基类类型，在真正的对象调用的时候，程序语言会根据对象的真实类型所去调用其自身的方法。</p>
+<hr>
+<h3 id="1-向下转型"><a href="#1-向下转型" class="headerlink" title="1.向下转型"></a>1.向下转型</h3><h3 id="2-继承与多态设计"><a href="#2-继承与多态设计" class="headerlink" title="2.继承与多态设计"></a>2.继承与多态设计</h3></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://0x4154304d.github.io">AT0M</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://0x4154304d.github.io/posts/2020/03/11/Java%E5%A4%9A%E6%80%81/">https://0x4154304d.github.io/posts/2020/03/11/Java%E5%A4%9A%E6%80%81/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../../../../../tags/Java/">Java</a><a class="post-meta__tags" href="../../../../../tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.pixabay.com/photo/2023/02/08/15/10/sculpture-7776861_1280.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="../../../../../posts/2020/03/12/iptables%20%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/" title="iptables 配置详解"><img class="cover" src="https://cdn.pixabay.com/photo/2023/02/06/16/46/sea-7772372_1280.jpg" onerror="onerror=null;src='../../../../../img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous</div><div class="prev_info">iptables 配置详解</div></div></a></div><div class="next-post pull-right"><a href="../../../../../posts/2020/03/07/conda%E6%9B%B4%E6%8D%A2%E8%BD%AF%E4%BB%B6%E6%BA%90/" title="conda更换软件源"><img class="cover" src="https://cdn.pixabay.com/photo/2023/02/06/16/46/sea-7772372_1280.jpg" onerror="onerror=null;src='../../../../../img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next</div><div class="next_info">conda更换软件源</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="../../../../../posts/2020/03/14/2020-03-14-JDK%E9%85%8D%E7%BD%AE/" title="JDK配置"><img class="cover" src="https://cdn.pixabay.com/photo/2023/01/14/19/50/flower-7718952_1280.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-14</div><div class="title">JDK配置</div></div></a></div><div><a href="../../../../../posts/2020/03/20/2020-03-20-java-static/" title="Java static"><img class="cover" src="https://cdn.pixabay.com/photo/2023/02/04/07/38/cherry-blossoms-7766587_1280.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-20</div><div class="title">Java static</div></div></a></div><div><a href="../../../../../posts/2020/03/22/2020-03-22-Java%E6%9E%84%E9%80%A0%E5%99%A8/" title="Java构造器"><img class="cover" src="https://cdn.pixabay.com/photo/2023/02/06/16/46/sea-7772372_1280.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-22</div><div class="title">Java构造器</div></div></a></div><div><a href="../../../../../posts/2020/03/25/2020-03-25-Java-Exception-Handling/" title="Java Exception Handling"><img class="cover" src="https://cdn.pixabay.com/photo/2023/02/06/01/14/superb-fairywren-7770904_1280.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-25</div><div class="title">Java Exception Handling</div></div></a></div><div><a href="../../../../../posts/2020/04/01/2020-04-01-Java-Serializable/" title="Java Serializable"><img class="cover" src="https://cdn.pixabay.com/photo/2023/01/30/19/40/gulls-7756481_1280.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-04-01</div><div class="title">Java Serializable</div></div></a></div><div><a href="../../../../../posts/2020/04/19/2020-04-19-Integer.numberOfLeadingZero%E8%AF%A6%E8%A7%A3/" title="Integer.numberOfLeadingZero详解"><img class="cover" src="https://cdn.pixabay.com/photo/2023/02/07/14/45/snow-7774312_1280.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-04-19</div><div class="title">Integer.numberOfLeadingZero详解</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://avatars.githubusercontent.com/u/37744507" onerror="this.onerror=null;this.src='../../../../../img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">AT0M</div><div class="author-info__description">Do right things, do thing in a right way.</div></div><div class="card-info-data site-data is-center"><a href="../../../../../archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="../../../../../tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="../../../../../categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/0x4154304D" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="../../../../../spfforu@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="../../../../../atom.xml" target="_blank" title="RSS"><i class="fa-solid fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-%E5%90%91%E4%B8%8A%E8%BD%AC%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">0.向上转型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%90%91%E4%B8%8B%E8%BD%AC%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">1.向下转型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%A4%9A%E6%80%81%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text">2.继承与多态设计</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="../../../../../posts/2024/03/06/CSRF/" title="CSRF"><img src="https://cdn.pixabay.com/photo/2023/02/06/16/46/sea-7772372_1280.jpg" onerror="this.onerror=null;this.src='../../../../../img/404.jpg'" alt="CSRF"/></a><div class="content"><a class="title" href="../../../../../posts/2024/03/06/CSRF/" title="CSRF">CSRF</a><time datetime="2024-03-06T02:07:40.940Z" title="Created 2024-03-06 10:07:40">2024-03-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../../../../../posts/2024/03/06/IDA7.0_dark_theme/" title="Untitled"><img src="https://cdn.pixabay.com/photo/2023/02/04/07/38/cherry-blossoms-7766587_1280.jpg" onerror="this.onerror=null;this.src='../../../../../img/404.jpg'" alt="Untitled"/></a><div class="content"><a class="title" href="../../../../../posts/2024/03/06/IDA7.0_dark_theme/" title="Untitled">Untitled</a><time datetime="2024-03-06T02:07:40.940Z" title="Created 2024-03-06 10:07:40">2024-03-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../../../../../posts/2024/03/06/Nginx%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/" title="Untitled"><img src="https://cdn.pixabay.com/photo/2023/02/04/07/38/cherry-blossoms-7766587_1280.jpg" onerror="this.onerror=null;this.src='../../../../../img/404.jpg'" alt="Untitled"/></a><div class="content"><a class="title" href="../../../../../posts/2024/03/06/Nginx%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/" title="Untitled">Untitled</a><time datetime="2024-03-06T02:07:40.940Z" title="Created 2024-03-06 10:07:40">2024-03-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../../../../../posts/2024/03/06/Tomcat%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" title="Untitled"><img src="https://cdn.pixabay.com/photo/2023/01/14/19/50/flower-7718952_1280.jpg" onerror="this.onerror=null;this.src='../../../../../img/404.jpg'" alt="Untitled"/></a><div class="content"><a class="title" href="../../../../../posts/2024/03/06/Tomcat%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" title="Untitled">Untitled</a><time datetime="2024-03-06T02:07:40.940Z" title="Created 2024-03-06 10:07:40">2024-03-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="../../../../../posts/2024/03/06/Ubuntu%20%E7%A1%AC%E7%9B%98%E6%8C%82%E8%BD%BD/" title="Untitled"><img src="https://cdn.pixabay.com/photo/2023/02/04/07/38/cherry-blossoms-7766587_1280.jpg" onerror="this.onerror=null;this.src='../../../../../img/404.jpg'" alt="Untitled"/></a><div class="content"><a class="title" href="../../../../../posts/2024/03/06/Ubuntu%20%E7%A1%AC%E7%9B%98%E6%8C%82%E8%BD%BD/" title="Untitled">Untitled</a><time datetime="2024-03-06T02:07:40.940Z" title="Created 2024-03-06 10:07:40">2024-03-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2024 By AT0M</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../../js/utils.js?v=4.13.0"></script><script src="../../../../../js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
